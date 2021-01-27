@@ -72,13 +72,12 @@ This folder should contain:
 3. ```biobert_vocab.txt``` - BioBERT vocab needed both for training and prediction.
 
 ### 3. Metrics of Trained Model
-```Train: B-DAT Precision: 0.88 B-DAT Recall: 0.974 F1: 0.925
-Train: B-MET Precision: 0.984 B-MET Recall: 0.987 F1: 0.985
-Train: I-MET Precision: 0.989 I-MET Recall: 0.973 F1: 0.981
-Val: B-DAT Precision: 0.857 B-DAT Recall: 0.96 F1: 0.906
-Val: B-MET Precision: 0.983 B-MET Recall: 0.986 F1: 0.984
-Val: I-MET Precision: 0.992 I-MET Recall: 0.973 F1: 0.982
-```
+```Train: B-DAT Precision: 0.88 B-DAT Recall: 0.974 F1: 0.925``` <br>
+```Train: B-MET Precision: 0.984 B-MET Recall: 0.987 F1: 0.985``` <br>
+```Train: I-MET Precision: 0.989 I-MET Recall: 0.973 F1: 0.981``` <br>
+```Val: B-DAT Precision: 0.857 B-DAT Recall: 0.96 F1: 0.906``` <br>
+```Val: B-MET Precision: 0.983 B-MET Recall: 0.986 F1: 0.984``` <br>
+```Val: I-MET Precision: 0.992 I-MET Recall: 0.973 F1: 0.982``` <br>
 
 ### 4. Limitations
 - For **datasets**, current model has only been trained on Accession Number IDs. There are many more types of dataset identifiers, such as through DOIs or external URLs. The model does not currently address these
