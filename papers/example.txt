@@ -1,0 +1,3 @@
+Single-cell transcriptomic data are available at the N CBI Gene Expression Omnibus (GEO) under accession GSE115746.
+The virus infection microarray data are available in GEO under accession GSE55278. 
+Serum samples were obtained at sacrifice (day 49) and analyzed by ELISA.
