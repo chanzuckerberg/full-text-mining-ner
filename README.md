@@ -1,8 +1,10 @@
-## Data Mining for Methods and Datasets in Biomedical aricles
+# Data Mining for Methods and Datasets in Biomedical Articles
 
 This repo contains code to extract mentions of **experimental methods** and **datasets** as accession numbers IDs from biomedical articles. <br>
-You can use the prediction code on your own files! Instructions below.
+This is a NER model built on BioBERT[1] and trained on 279876 sentences coming from 36k biomedical research articles containing 5250 dataset (as accession number IDs) and 78318 method mentions. <br>
+You can use the prediction code on your own files!
 
+## Examples of outputs
 Example 1:
 ```,sentence,sent_idx,start_word_idx,end_word_idx,mention,tag
 0,Single-cell transcriptomic data are available at the N CBI Gene Expression Omnibus (GEO) under accession GSE115746.,0,17,17,GSE115746,DAT
@@ -36,28 +38,30 @@ Example 3:
 6,"After a 15min incubation at RT, the transfection mix was added onto 80% confluent 293 cells, cultured in 13ml 293 culture medium.",220,8,8,transfection,MET
 7,"Virus-containing medium was harvested and replaced with fresh medium 48h, 60h and 72h after transfection.",221,15,15,transfection,MET
 ```
-
+## Using the code for prediction
 ### 1. Code Setup
 
-After cloning the repo locally, run the following commands:
-1. Install all the packages required for the prediction code: ```pip install -r requirements.txt``` 
-2. Add the files corresponding to the articles you want to predict under the ```papers``` folder 
+After cloning the repo locally, run the following commands: <br>
+1. Download the trained *model.pt* file from [here](https://drive.google.com/file/d/1MiA60qli7mwo5hMa4fl401bpctfR9VeJ/view?usp=sharing) and add the file in the *model_artifacts* folder. <br> 
+This contains the trained model needed for prediction.
+2. Install all the packages required for the prediction code: ```pip install -r requirements.txt``` 
+3. Add the files corresponding to the articles you want to predict under the ```papers``` folder 
 - There are some examples already in this folder: example.txt, PMC3817409, PMC4900885, PMC5495578 <br>
-3. Run the prediction script on your text by running ```python predict.py -i article_path```
+4. Run the prediction script on your text by running ```python predict.py -i article_path```
 - For instance, if you want to get predictions on the PMC3817409 paper, you would run: <br>
 ```python predict.py -i papers/PMC3817409```
-4. The results will be printed in the terminal. If you want to save the results to a file, you can do so by adding the '-o' flag. <br>
+5. The results will be printed in the terminal. If you want to save the results to a file, you can do so by adding the '-o' flag. <br>
 - For instance, if you want to get predictions on the PMC3817409 paper **and** save them to *predictions/PMC3817409*, you would run: <br>
 ```python predict.py -i papers/PMC3817409 -o predictions/PMC3817409```
 - The predictions will be saved as a csv file under *predictions/PMC3817409*
 - The output format for the predictions is:
 ```sentence,sent_idx,start_word_idx,end_word_idx,mention,tag``` where
-- **sentence** = sentence where the mention was found
-- **sent_idx** = index of the sentence where the mention was found, in the text
-- **start_word_idx** = start index of the found mention in the sentence
-- **end_word_id** = end index of the found mention in the sentence
-- **mention** = actual mention found
-- **tag** = the type of mention found; this is either a *DAT* for a data mention or *MET* for a method mention 
+**sentence** = sentence where the mention was found <br>
+**sent_idx** = index of the sentence where the mention was found, in the text <br>
+**start_word_idx** = start index of the found mention in the sentence <br>
+**end_word_id** = end index of the found mention in the sentence <br>
+**mention** = actual mention found <br>
+**tag** = the type of mention found; this is either a *DAT* for a data mention or *MET* for a method mention <br>
 
 ### 2. Trained Model Artifacts
 The prediction code uses a BioBERT-based trained machine learning model. <br>
@@ -67,11 +71,7 @@ This folder should contain:
 2. ```idx2tag.json``` - artifact used both in the training and prediction code
 3. ```biobert_vocab.txt``` - BioBERT vocab needed both for training and prediction.
 
-### 3. Trained Model
-
-Syntax highlighted code block
-
-The model was trained on 279876 sentences coming from 36k biomedical research articles containing 5250 dataset (as accession number IDs) and 78318 method mentions. The metrics of the model are: 
+### 3. Metrics of Trained Model
 ```Train: B-DAT Precision: 0.88 B-DAT Recall: 0.974 F1: 0.925
 Train: B-MET Precision: 0.984 B-MET Recall: 0.987 F1: 0.985
 Train: I-MET Precision: 0.989 I-MET Recall: 0.973 F1: 0.981
