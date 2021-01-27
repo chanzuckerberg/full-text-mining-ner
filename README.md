@@ -87,3 +87,8 @@ Val: I-MET Precision: 0.992 I-MET Recall: 0.973 F1: 0.982
 
 ### 5. Next steps
 - We will be working on releasing the training data, as well as the training code to the community. <br> We have released the prediction code hoping it will be helpful for researchers who wish to extract mentions of datasets and methods from their own texts or journal articles, without having to train a model themselves. 
+
+### References
+Lee, Jinhyuk, et al. “BioBERT: a pre-trained biomedical language representation model for biomedical text mining.” Bioinformatics 36.4 (2020): 1234–1240.
+Devlin, Jacob, et al. “Bert: Pre-training of deep bidirectional transformers for language understanding.” arXiv preprint arXiv:1810.04805 (2018).
+
