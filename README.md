@@ -1,6 +1,6 @@
 # Data Mining for Methods and Datasets in Biomedical Articles
 
-This repo contains code to extract mentions of **experimental methods** and **datasets** as accession numbers IDs from biomedical articles. <br>
+This repo contains code to extract mentions of **experimental methods** and **datasets** as accession numbers IDs from biomedical articles.
 This is a NER model built on BioBERT[1] and trained on 279876 sentences coming from 36k biomedical research articles containing 5250 dataset (as accession number IDs) and 78318 method mentions. <br>
 You can use the prediction code on your own files!
 
