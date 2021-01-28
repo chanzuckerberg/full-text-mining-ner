@@ -38,7 +38,8 @@ Example 3:
 6,"After a 15min incubation at RT, the transfection mix was added onto 80% confluent 293 cells, cultured in 13ml 293 culture medium.",220,8,8,transfection,MET
 7,"Virus-containing medium was harvested and replaced with fresh medium 48h, 60h and 72h after transfection.",221,15,15,transfection,MET
 ```
-## Using the code for prediction
+## Getting started
+You can follow these steps to use the code for prediction on your own biomedical papers
 ### 1. Code Setup
 
 After cloning the repo locally, run the following commands: <br>
