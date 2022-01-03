@@ -42,9 +42,9 @@ Example 3:
 
 The model checkpts can be downloaded from [here](https://drive.google.com/drive/folders/12hj0nFiQH3wdOfaVzmoTAErbs-c7s9zT?usp=sharing)
 
-**File Updates** <br>
+<!-- **File Updates** <br>
 ```prediction.ipynb``` - contains prediction code <br>
-```training_data_analysis.ipynb``` - contains training data analysis <br>
+```training_data_analysis.ipynb``` - contains training data analysis <br> -->
 
 ## Getting started
 You can follow these steps to use the code for prediction on your own biomedical papers
