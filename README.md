@@ -4,7 +4,7 @@ This repo contains code to extract mentions of **experimental methods** and **da
 This is a NER model built on BioBERT[1] and trained on 279876 sentences coming from 36k biomedical research articles containing 5250 dataset (as accession number IDs) and 78318 method mentions. <br>
 You can use the prediction code on your own files!
 
-## Examples of outputs
+### Examples of outputs
 Example 1:
 ```,sentence,sent_idx,start_word_idx,end_word_idx,mention,tag
 0,Single-cell transcriptomic data are available at the N CBI Gene Expression Omnibus (GEO) under accession GSE115746.,0,17,17,GSE115746,DAT
@@ -39,16 +39,36 @@ Example 3:
 7,"Virus-containing medium was harvested and replaced with fresh medium 48h, 60h and 72h after transfection.",221,15,15,transfection,MET
 ```
 ## Updates
+February 2022: <br>
+- Making training data, as well as train/val/test splits available under `data` <br>
+- Making training script available - `train.py` <br>
 
+
+## Data
+Training, validation and test data splits are under the `data` directory. <br>
+We are making the data available under a [CC-O license](https://creativecommons.org/publicdomain/zero/1.0/). <br>
+
+Training, Validation and Test Split Characteristics:
+| | Train Split | Val Split | Test Split | Total | 
+|-|-|-|-|-|
+| Number of sentences | 52206 | 6526 | 6526 | 65258 |
+| Number of dataset mentions | 862 | 141 | 116 | 1119 | 
+| Number of method mentions | 53249 | 6642 | 6634 | 66525 | 
+
+### Dataset Creation
+The dataset was created by retrieving [Europe PMC](http://europepmc.org/) annotations through the [Europe PMC AnnotationsAPI](https://europepmc.org/AnnotationsApi), mapping them to corresponding full-text papers and sentences in our own full-text corpus and engaging an expert team of biomedical experts for further curation. <br> 
+- Our full-text corpus consists of full-text content from the [PubMed Central Open Access (PMC-OA) Subset](https://www.ncbi.nlm.nih.gov/pmc/tools/openftlis), an open-access collection of articles from [PubmedCentral (PMC)](https://www.ncbi.nlm.nih.gov/pmc/). <br>
+- From this set, we chose 8 journals containing 35410 articles.<br>
+- We called the Europe PMC API to retrieve annotations of experimental methods and data accession number IDs corresponding to these journal articles' PMIDs or PMCIDs. <br>
+- For accession number IDs, we only focused on a set of databases which we decided are a good representation of biomedical datasets, such as GEO, BioProject or ArrayExpress. <br>
+- For experimental methods, we filtered out terms retrieved from Europe PMC that did not fit our own definitions.
+
+## Prediction
 The model checkpts can be downloaded from [here](https://drive.google.com/drive/folders/12hj0nFiQH3wdOfaVzmoTAErbs-c7s9zT?usp=sharing)
 
-<!-- **File Updates** <br>
-```prediction.ipynb``` - contains prediction code <br>
-```training_data_analysis.ipynb``` - contains training data analysis <br> -->
-
-## Getting started
+### Getting started
 You can follow these steps to use the code for prediction on your own biomedical papers
-### 1. Code Setup
+#### 1. Code Setup
 
 After cloning the repo locally, run the following commands: <br>
 1. Download the trained *model.pt* file from [here](https://drive.google.com/file/d/1MiA60qli7mwo5hMa4fl401bpctfR9VeJ/view?usp=sharing) and add the file in the *model_artifacts* folder. <br> 
@@ -72,7 +92,7 @@ This contains the trained model needed for prediction.
 **mention** = actual mention found <br>
 **tag** = the type of mention found; this is either a *DAT* for a data mention or *MET* for a method mention <br>
 
-### 2. Trained Model Artifacts
+#### 2. Trained Model Artifacts
 The prediction code uses a BioBERT-based trained machine learning model. <br>
 All the artifacts needed for training are under *model_artifacts*. <br>
 This folder should contain:
@@ -80,7 +100,7 @@ This folder should contain:
 2. ```idx2tag.json``` - artifact used both in the training and prediction code
 3. ```biobert_vocab.txt``` - BioBERT vocab needed both for training and prediction.
 
-### 3. Metrics of Trained Model
+## Metrics of Trained Model
 ```Train: B-DAT Precision: 0.88 B-DAT Recall: 0.974 F1: 0.925``` <br>
 ```Train: B-MET Precision: 0.984 B-MET Recall: 0.987 F1: 0.985``` <br>
 ```Train: I-MET Precision: 0.989 I-MET Recall: 0.973 F1: 0.981``` <br>
@@ -88,17 +108,20 @@ This folder should contain:
 ```Val: B-MET Precision: 0.983 B-MET Recall: 0.986 F1: 0.984``` <br>
 ```Val: I-MET Precision: 0.992 I-MET Recall: 0.973 F1: 0.982``` <br>
 
-### 4. Limitations
+## Limitations
 - For **datasets**, current model has only been trained on Accession Number IDs. There are many more types of dataset identifiers, such as through DOIs or external URLs. The model does not currently address these
 - For **methods**, there is some variety in the community as to the definition of an experimental method. Current model has only been trained on experimental biomedical methods. We are working on finalizing our own definition for experimental methods.
 
 
-### 5. Next steps
+## Next steps
 - We will be working on releasing the training data, as well as the training code to the community. <br> We have released the prediction code hoping it will be helpful for researchers who wish to extract mentions of datasets and methods from their own texts or journal articles, without having to train a model themselves. 
 
-### References
+## References
 1. Lee, Jinhyuk, et al. “BioBERT: a pre-trained biomedical language representation model for biomedical text mining.” Bioinformatics 36.4 (2020): 1234–1240. <br>
 2. Devlin, Jacob, et al. “Bert: Pre-training of deep bidirectional transformers for language understanding.” arXiv preprint arXiv:1810.04805 (2018).
+
+## License
+We are making the data available under a [CC-O license](https://creativecommons.org/publicdomain/zero/1.0/). <br>
 
 ## Reporting Security Issues
 To report a security issue, please follow the steps outlined in [SECURITY.md](SECURITY.md) <br> <br>
