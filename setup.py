@@ -14,6 +14,6 @@ setup(
     author_email='aistrate@chanzuckerberg.com',
     description='Methods and dataset named entity recognition (NER) for full-text biomedical research articles.',
     install_requires=[
-        'pandas==1.1.2', 'nltk==3.5', 'torch==1.6.0', 'transformers==3.1.0', 'scikit-learn==0.23.1'
+        'pandas==1.1.2', 'nltk==3.5', 'torch==1.6.0', 'transformers==5.0.0rc3', 'scikit-learn==0.23.1'
     ]
 )
